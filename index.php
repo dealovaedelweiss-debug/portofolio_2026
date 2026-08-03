@@ -11,6 +11,10 @@
 	//resume
 	$q_resume = mysqli_query($conn, "SELECT * FROM resume ORDER BY id DESC");
 	$resume = mysqli_fetch_all($q_resume, MYSQLI_ASSOC);
+
+	//skill
+	$q_skill = mysqli_query($conn, "SELECT * FROM skills ORDER BY id DESC");
+	$skills = mysqli_fetch_all($q_skill, MYSQLI_ASSOC);
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -145,13 +149,13 @@
 					</div>
 					</div>
 				<div class="counter-wrap ftco-animate d-flex mt-md-3">
-				<div class="text">
+				<!-- <div class="text">
 					<p class="mb-4">
 						<span class="number" data-number="120">0</span>
 						<span><?= $about['description'] ?></span>
 					</p>
 					<p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
-				</div>
+				</div>` -->
 				</div>
 				</div>
 			</div>
@@ -168,28 +172,35 @@
 			</div>
 		</div>
 		<div class="row">
-		<div class="col-md-6">
-		<div class="resume-wrap ftco-animate">
-							<span class="date">2014-2015</span>
-							<h2>Master Degree of Design</h2>
-							<span class="position">Cambridge University</span>
-							<p class="mt-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						</div>
-						<div class="resume-wrap ftco-animate">
+			<?php
+				foreach ($resume as $v) {
+				?>
+			<div class="col-md-6">
+				
+				<div class="resume-wrap ftco-animate">
+					<span class="date"><?= $v['year_start']. "-" . $v['year_end'] ?></span>
+					<h2><?= $v['title']?></h2>
+					<span class="position"><?= $v['substitle']?></span>
+					<p class="mt-4"><?= $v['description']?></p>
+				</div>
+						<!-- <div class="resume-wrap ftco-animate">
 							<span class="date">2014-2015</span>
 							<h2>Bachelor's Degree of C.A</h2>
 							<span class="position">Cambridge University</span>
 							<p class="mt-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						</div>
-						<div class="resume-wrap ftco-animate">
+						</div> -->
+						<!-- <div class="resume-wrap ftco-animate">
 							<span class="date">2014-2015</span>
 							<h2>Diploma in Computer</h2>
 							<span class="position">Cambridge University</span>
 							<p class="mt-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-						</div>
-					</div>
+						</div> -->
+			</div>
+			<?php
+			}
+			?>
 
-					<div class="col-md-6">
+					<!-- <div class="col-md-6">
 						<div class="resume-wrap ftco-animate">
 							<span class="date">2014-2015</span>
 							<h2>Art &amp; Creative Director</h2>
@@ -208,14 +219,15 @@
 							<span class="position">Cambridge University</span>
 							<p class="mt-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
 						</div>
-					</div>
-				</div>
+					</div> -->
+		</div>
 				<div class="row justify-content-center mt-5">
 					<div class="col-md-6 text-center ftco-animate">
 						<p><a href="#" class="btn btn-primary py-4 px-5">Download CV</a></p>
 					</div>
-				</div>
 			</div>
+		</div>
+			
 		</section>
 
 		<section class="ftco-section" id="services-section">
@@ -297,25 +309,32 @@
 			<section class="ftco-section" id="skills-section">
 				<div class="container">
 					<div class="row justify-content-center pb-5">
-			<div class="col-md-12 heading-section text-center ftco-animate">
-				<h1 class="big big-2">Skills</h1>
-				<h2 class="mb-4">My Skills</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-			</div>
-			</div>
+						<div class="col-md-12 heading-section text-center ftco-animate">
+							<h1 class="big big-2">Skills</h1>
+							<h2 class="mb-4">My Skills</h2>
+							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+						</div>
+					</div>
 					<div class="row">
+						<?php
+						foreach ($skills as $index => $v) {
+						?>
 						<div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
-								<h3>Photoshop</h3>
+								<h3 style="margin-bottom: <?= $v['progress']< 7 ? '20px' : '5px'?>;"><?=  $v['name'] ?></h3>
 								<div class="progress">
-									<div class="progress-bar color-1" role="progressbar" aria-valuenow="90"
-									aria-valuemin="0" aria-valuemax="100" style="width:90%">
-									<span>90%</span>
+									<div class="progress-bar color-<?= $index + 1 ?>" role="progressbar" aria-valuenow="<?= $v['progress'] ?>"
+									aria-valuemin="0" aria-valuemax="100" style="width:<?= $v['progress'] ?>%">
+									<span><?= $v['progress'] ?>%</span>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 animate-box">
+						<?php
+						}
+						?>
+						
+						<!-- <div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
 								<h3>jQuery</h3>
 								<div class="progress">
@@ -325,8 +344,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6 animate-box">
+						</div> -->
+						<!-- <div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
 								<h3>HTML5</h3>
 								<div class="progress">
@@ -336,8 +355,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6 animate-box">
+						</div> -->
+						<!-- <div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
 								<h3>CSS3</h3>
 								<div class="progress">
@@ -347,8 +366,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6 animate-box">
+						</div> -->
+						<!-- <div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
 								<h3>WordPress</h3>
 								<div class="progress">
@@ -358,8 +377,8 @@
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-md-6 animate-box">
+						</div> -->
+						<!-- <div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
 								<h3>SEO</h3>
 								<div class="progress">
@@ -369,7 +388,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</section>

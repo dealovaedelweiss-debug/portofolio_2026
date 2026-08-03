@@ -4,19 +4,30 @@ session_regenerate_id();
 include "config/koneksi.php";
 /** @var mysqli $conn */
 if (!isset($_SESSION['NAME'])){
-  header("location:index.php");
+  header("location:signin.php");
   exit();
 }
-//tampilin semua data dri table use, urutan dari yang besar ke kecil
-$query = mysqli_query($conn, "SELECT * FROM contacts ORDER BY id DESC"); //* ALL asc kecil ke besar 
-$rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
+//jika tombol save di tekan 
+$id = isset($_GET['edit'])?$_GET['edit']:'';
+$query = mysqli_query($conn, "SELECT * FROM skills WHERE id = '$id'"); 
+$row = mysqli_fetch_assoc($query);
+if (isset($_POST['save'])){
+  $name = $_POST['name'];
+  $progress = $_POST['progress'];
+  //masukan ke dalam table users, sebutkan kolom di table user yang nilanya
+  //diambil dari user ketika menginput data
+if($id){
+  //query update
+  $update = mysqli_query($conn, "UPDATE skills SET name='$name', progress ='$progress' WHERE id='$id'");
+  header("location:skill.php?update=berhasil");
+}else{
+  $insert = mysqli_query($conn, "INSERT INTO skills (name, progress ) VALUES('$name','$progress' )");
+  header("location:skill.php?tambah=berhasil");
+  }
 
-//jika parameter delete ada 
-if(isset($_GET['delete'])){
-  $delete = $_GET['delete'];
-  $delete = mysqli_query($conn, "DELETE FROM contacts WHERE id='$delete'");
-  header("location:contct.php?hapus=berhasil");
 }
+//tampilin semua data dri table use, urutan dari yang besar ke kecil
+//* ALL asc kecil ke besar 
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +35,7 @@ if(isset($_GET['delete'])){
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+  <!-- <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title> -->
   <meta
     content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     name="viewport" />
@@ -77,54 +88,40 @@ if(isset($_GET['delete'])){
 
       <div class="container">
         <div class="page-inner">
-          <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+          <div
+            class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
             <div>
-              <h3 class="fw-bold mb-3">Contact</h3>
-            </div>
-            <div class="ms-md-auto py-2 py-md-0">
-              <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-              <a href="create-user.php" class="btn btn-primary btn-round">Create New contact</a>
+              <h3 class="fw-bold mb-3"><?php echo isset($_GET['edit'])? 'Edit Skill' : 'Create New Skill' ?></h3>
+              <!-- <h6 class="op-7 mb-2">Hallo, Selamat Bergabung</h6> -->
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6 col-md-12">
               <div class="card">
                 <div class="card-body">
-                  <table class="table table-bordered table-striped"> 
-                    <!-- table-bordere untuk membuat 
-                    table-striped untuk mengubah warna setiap table ganjil genap-->
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Subject</th>
-                        <th>Message</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tb>
-                      <!-- tb>tr>td untuk membuat langsung -->
-                      <?php
-                      foreach ($rows as $index => $row): ?>
-                      <tr>
-                        <td><?php echo $index += 1 ?></td>
-                        <td><?php echo $row ['name']  ?></td>
-                        <td><?php echo $row ['email'] ?></td>
-                        <td><?php echo $row ['subject'] ?></td>
-                        <td><?php echo $row ['message'] ?></td>
-                        <td>
-                          <a class="btn btn-success btn-sm"
-                          href="create-contact.php?edit=<?php echo $row['id']?>
-                          ">Detail</a>
-                          
-                          <a onclick="return confirm('Are you sure wanna delete this data?')" class="btn btn-danger btn-sm"
-                          href="create-contact.php?delete=<?php echo $row['id']?>">Delete</a>
-                        </td>
-                      </tr>
-                      <?php endforeach ?> 
-                    </tb>
-                  </table>
+                  <form action="" method="post">
+                    <div class="mb-3">
+                      <label for="" class="form-label fw-bold">Name</label>
+                      <input type="text" class="form-control" name="name" placeholder="Enter Name" required 
+                      value="<?php echo ($id) ? $row['name'] : ''?>">
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label fw-bold">Progress</label>
+                      <input type="number" class="form-control" name="progress" placeholder="Enter Email" required
+                      value="<?php echo ($id) ? $row['progress'] : ''?>">
+                    </div>
+                    <!-- <div class="mb-3">
+                      <label for="" class="form-label fw-bold">
+                        <?php echo ($id) ? 
+                        'password <small class="text-secondary">(leave blank if you dont not
+                        wish to change it)</small>': 'password'?>
+                      </label>
+                      <input type="password" class="form-control" name="password" placeholder="Enter password" <?php echo ($id) ? '' : 'required'?>>
+                    </div> -->
+                    <button class="btn btn-primary" name="save" type="submit">
+                      Save
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>
