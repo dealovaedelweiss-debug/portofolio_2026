@@ -92,7 +92,7 @@ if(isset($_GET['delete'])){
             <div class="col-sm-6 col-md-12">
               <div class="card">
                 <div class="card-body">
-                  <table class="table table-bordered table-striped"> 
+                  <table class="table table-bordered table-striped" id="myTable"> 
                     <!-- table-bordere untuk membuat 
                     table-striped untuk mengubah warna setiap table ganjil genap-->
                     <thead>

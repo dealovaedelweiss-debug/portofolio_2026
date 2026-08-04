@@ -15,11 +15,19 @@
 	//skill
 	$q_skill = mysqli_query($conn, "SELECT * FROM skills ORDER BY id DESC");
 	$skills = mysqli_fetch_all($q_skill, MYSQLI_ASSOC);
+
+	//project
+	$q_project =  mysqli_query($conn, "SELECT * FROM project ORDER BY id DESC");
+	$projects = mysqli_fetch_all($q_project, MYSQLI_ASSOC);
+
+	//blogger
+	$q_blog = mysqli_query($conn, "SELECT * FROM blog ORDER BY id DESC");
+	$blogs = mysqli_fetch_all($q_blog, MYSQLI_ASSOC);
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
-		<title>Clark - Free Bootstrap 4 Template by Colorlib</title>
+		<!-- <title>Clark - Free Bootstrap 4 Template by Colorlib</title> -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
@@ -39,13 +47,14 @@
 		<link rel="stylesheet" href="css/flaticon.css">
 		<link rel="stylesheet" href="css/icomoon.css">
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/custom.css">
 	</head>
 	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 		
 		
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light site-navbar-target" id="ftco-navbar">
 			<div class="container">
-			<a class="navbar-brand" href="index.html">Clark</a>
+			<a class="navbar-brand" href="index.html">Edelweiss</a>
 			<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="oi oi-menu"></span> Menu
 			</button>
@@ -318,11 +327,12 @@
 					<div class="row">
 						<?php
 						foreach ($skills as $index => $v) {
+							// mysqli_escape_string(); untuk terhindar dari serangan injeksi sql
 						?>
 						<div class="col-md-6 animate-box">
 							<div class="progress-wrap ftco-animate">
-								<h3 style="margin-bottom: <?= $v['progress']< 7 ? '20px' : '5px'?>;"><?=  $v['name'] ?></h3>
-								<div class="progress">
+								<h3 style="margin-bottom: <?= $v['progress'] <= 10 ? '33px' : '5px'?>;"><?= htmlspecialchars( $v['name'] )?></h3>
+								<div class="progress";>
 									<div class="progress-bar color-<?= $index + 1 ?>" role="progressbar" aria-valuenow="<?= $v['progress'] ?>"
 									aria-valuemin="0" aria-valuemax="100" style="width:<?= $v['progress'] ?>%">
 									<span><?= $v['progress'] ?>%</span>
@@ -333,62 +343,6 @@
 						<?php
 						}
 						?>
-						
-						<!-- <div class="col-md-6 animate-box">
-							<div class="progress-wrap ftco-animate">
-								<h3>jQuery</h3>
-								<div class="progress">
-									<div class="progress-bar color-2" role="progressbar" aria-valuenow="85"
-									aria-valuemin="0" aria-valuemax="100" style="width:85%">
-									<span>85%</span>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- <div class="col-md-6 animate-box">
-							<div class="progress-wrap ftco-animate">
-								<h3>HTML5</h3>
-								<div class="progress">
-									<div class="progress-bar color-3" role="progressbar" aria-valuenow="95"
-									aria-valuemin="0" aria-valuemax="100" style="width:95%">
-									<span>95%</span>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- <div class="col-md-6 animate-box">
-							<div class="progress-wrap ftco-animate">
-								<h3>CSS3</h3>
-								<div class="progress">
-									<div class="progress-bar color-4" role="progressbar" aria-valuenow="90"
-									aria-valuemin="0" aria-valuemax="100" style="width:90%">
-									<span>90%</span>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- <div class="col-md-6 animate-box">
-							<div class="progress-wrap ftco-animate">
-								<h3>WordPress</h3>
-								<div class="progress">
-									<div class="progress-bar color-5" role="progressbar" aria-valuenow="70"
-									aria-valuemin="0" aria-valuemax="100" style="width:70%">
-									<span>70%</span>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<!-- <div class="col-md-6 animate-box">
-							<div class="progress-wrap ftco-animate">
-								<h3>SEO</h3>
-								<div class="progress">
-									<div class="progress-bar color-6" role="progressbar" aria-valuenow="80"
-									aria-valuemin="0" aria-valuemax="100" style="width:80%">
-									<span>80%</span>
-									</div>
-								</div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 			</section>
@@ -404,26 +358,41 @@
 			</div>
 			</div>
 				<div class="row">
+					<?php
+				foreach ($projects as $index => $v) {
+					$no = $index + 1;
+					if ($no % 2 == 0 ) {
+						?>
 					<div class="col-md-4">
-						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-4.jpg);">
+						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>);">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
-								<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-								<span>Web Design</span>
+								<h3><a href="<?= $v['link'] ?>"><?= $v['title'] ?></a></h3>
+								<span><?= $v['subtitle'] ?></span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-8">
-						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-5.jpg);">
+						<?php
+					}else {
+						?>
+						<div class="col-md-8">
+						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>);">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
-								<h3><a href="#">Branding &amp; Illustration Design</a></h3>
-								<span>Web Design</span>
+								<h3><a href="<?= $v['link'] ?>"><?= $v['title'] ?></a></h3>
+								<span><?= $v['subtitle'] ?></span>
 							</div>
 						</div>
 					</div>
+						<?php
+					}
+				?>
+					
+					
+					<?php 
+					} ?>
 
-					<div class="col-md-8">
+					<!-- <div class="col-md-8">
 						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-1.jpg);">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
@@ -439,8 +408,8 @@
 								<span>Web Design</span>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
+					</div> -->
+					<!-- <div class="col-md-4">
 						<div class="row">
 							<div class="col-md-12">
 								<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(images/project-2.jpg);">
@@ -461,7 +430,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</section>
@@ -477,24 +446,28 @@
 			</div>
 			</div>
 			<div class="row d-flex">
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry justify-content-end">
-				<a href="single.html" class="block-20" style="background-image: url('images/image_1.jpg');">
-				</a>
-				<div class="text mt-3 float-right d-block">
-					<div class="d-flex align-items-center mb-3 meta">
-						<p class="mb-0">
-							<span class="mr-2">June 21, 2019</span>
-							<a href="#" class="mr-2">Admin</a>
-							<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-						</p>
+				<?php
+				foreach ($blogs as $index => $v) {
+				
+				?>
+				<div class="col-md-4 d-flex ftco-animate">
+					<div class="blog-entry justify-content-end">
+					<a href="single.html" class="block-20" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>); width:300px">
+					</a>
+					<div class="text mt-3 float-right d-block">
+						<div class="d-flex align-items-center mb-3 meta">
+							<p class="mb-0">
+								<span class="mr-2"><?= $v['date'] ?></span>
+							</p>
+						</div>
+						<h3 class="heading"><a href="single.html"><?= $v['title'] ?></a></h3>
+						<p><?= $v['description'] ?></p>
 					</div>
-					<h3 class="heading"><a href="single.html">Why Lead Generation is Key for Business Growth</a></h3>
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-				</div>
 				</div>
 			</div>
-			<div class="col-md-4 d-flex ftco-animate">
+				<?php }?>
+			
+			<!-- <div class="col-md-4 d-flex ftco-animate">
 				<div class="blog-entry justify-content-end">
 				<a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
 				</a>
@@ -510,8 +483,8 @@
 					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 				</div>
 				</div>
-			</div>
-			<div class="col-md-4 d-flex ftco-animate">
+			</div> -->
+			<!-- <div class="col-md-4 d-flex ftco-animate">
 				<div class="blog-entry">
 				<a href="single.html" class="block-20" style="background-image: url('images/image_3.jpg');">
 				</a>
@@ -527,12 +500,12 @@
 					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 				</div>
 				</div>
-			</div>
+			</div> -->
 			</div>
 		</div>
 		</section>
 
-		<section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
+		<!-- <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
 			<div class="container">
 					<div class="row d-md-flex align-items-center">
 			<div class="col-md d-flex justify-content-center counter-wrap ftco-animate">
@@ -569,9 +542,9 @@
 			</div>
 			</div>
 		</div>
-		</section>
+		</section> -->
 
-		<section class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
+		<!-- <section class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg)">
 				<div class="container">
 					<div class="row justify-content-center">
 						<div class="col-md-7 ftco-animate text-center">
@@ -581,7 +554,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+		</section> -->
 
 		<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
 		<div class="container">

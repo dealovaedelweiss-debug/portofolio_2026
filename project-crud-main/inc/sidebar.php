@@ -1,4 +1,5 @@
-project-crud-main/user.php    <div class="sidebar" data-background-color="dark">
+project-crud-main/user.php    
+<div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="dark">
@@ -69,6 +70,22 @@ project-crud-main/user.php    <div class="sidebar" data-background-color="dark">
                             aria-expanded="false">
                             <i class="fas fa-code"></i>
                             <p>Skills</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="project.php"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-diagram-project"></i>
+                            <p>Project</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            href="blog.php"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-blogger"></i>
+                            <p>My Blogs</p>
                         </a>
                     </li>
                     <li class="nav-item">
