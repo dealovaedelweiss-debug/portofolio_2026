@@ -1,21 +1,13 @@
 <?php
+ob_start();
 session_start(); //wajib di palingh atsa
 session_regenerate_id();
 include "config/koneksi.php";
 /** @var mysqli $conn */
+//isset tidak kosong, !isset = kosong
 if (!isset($_SESSION['NAME'])){
   header("location:index.php");
   exit();
-}
-//tampilin semua data dri table use, urutan dari yang besar ke kecil
-$query = mysqli_query($conn, "SELECT * FROM skills ORDER BY id DESC"); //* ALL asc kecil ke besar 
-$rows = mysqli_fetch_all($query, MYSQLI_ASSOC);
-
-//jika parameter delete ada 
-if(isset($_GET['delete'])){
-  $delete = $_GET['delete'];
-  $delete = mysqli_query($conn, "DELETE FROM skills WHERE id='$delete'");
-  header("location:skill.php?hapus=berhasil");
 }
 
 ?>
@@ -24,7 +16,7 @@ if(isset($_GET['delete'])){
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+  <title>Portofolio Web Admin</title>
   <meta
     content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     name="viewport" />
@@ -47,7 +39,7 @@ if(isset($_GET['delete'])){
         <div class="main-header-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
               <img
                 src="assets/img/kaiadmin/logo_light.svg"
                 alt="navbar brand"
@@ -77,55 +69,18 @@ if(isset($_GET['delete'])){
 
       <div class="container">
         <div class="page-inner">
-          <div
-            class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
-            <div>
-              <h3 class="fw-bold mb-3">Skill</h3>
-              <!-- <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6> -->
-            </div>
-            <div class="ms-md-auto py-2 py-md-0">
-              <!-- <a href="#" class="btn btn-label-info btn-round me-2">Manage</a> -->
-              <a href="create-skill.php" class="btn btn-primary btn-round">Create New Skill</a>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6 col-md-12">
-              <div class="card">
-                <div class="card-body">
-                  <table class="table table-bordered table-striped"> 
-                    <!-- table-bordere untuk membuat 
-                    table-striped untuk mengubah warna setiap table ganjil genap-->
-                    <thead>
-                      <tr>
-                        <th>No</th>
-                        <th>Name</th>
-                        <th>Progress</th>
-                      </tr>
-                    </thead>
-                    <tb>
-                      <!-- tb>tr>td untuk membuat langsung -->
-                      <?php
-                      foreach ($rows as $index => $row): ?>
-                      <tr>
-                        <td><?php echo $index += 1 ?></td>
-                        <td><?php echo $row ['name']  ?></td>
-                        <td><?php echo $row ['progress'] ?></td>
-                        <td>
-                          <a class="btn btn-success btn-sm"
-                          href="create-skill.php?edit=<?php echo $row['id']?>
-                          ">Edit </a>
-                          
-                          <a onclick="return confirm('Are you sure wanna delete this data?')" class="btn btn-danger btn-sm"
-                          href="skill.php?delete=<?php echo $row['id']?>">Delete</a>
-                        </td>
-                      </tr>
-                      <?php endforeach ?> 
-                    </tb>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!-- templateing 
+          menggunakan GET : URL ?id, ?edit, ?delete -->
+          <?php
+          if (isset($_GET['page'])) {
+            //file_exists untuk menanya ada atau tidaknya 
+            if (file_exists($_GET['page']. '.php')) {
+              include $_GET['page']. '.php';
+            }else{
+              include 'notfound.php';
+            }
+          }
+          ?>
         </div>
       </div>
 

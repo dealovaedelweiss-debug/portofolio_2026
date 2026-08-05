@@ -1,4 +1,4 @@
-project-crud-main/user.php    
+<!-- project-crud-main/user.php     -->
 <div class="sidebar" data-background-color="dark">
         <div class="sidebar-logo">
             <!-- Logo Header -->
@@ -40,7 +40,7 @@ project-crud-main/user.php
                     <li class="nav-item">
                         <a
 
-                            href="user.php"
+                            href="app.php?page=user"
                             aria-expanded="false">
                             <i class="fas fa-user"></i>
                             <p>User</p>
@@ -49,7 +49,7 @@ project-crud-main/user.php
                     <li class="nav-item">
                         <a
 
-                            href="slider.php"
+                            href="app.php?page=slider"
                             aria-expanded="false">
                             <i class="fas fa-image"></i>
                             <p>Slider</p>
@@ -58,7 +58,7 @@ project-crud-main/user.php
                     <li class="nav-item">
                         <a
 
-                            href="resume.php"
+                            href="app.php?page=resume"
                             aria-expanded="false">
                             <i class="fas fa-file"></i>
                             <p>Resume</p>
@@ -66,7 +66,7 @@ project-crud-main/user.php
                     </li>
                     <li class="nav-item">
                         <a
-                            href="skill.php"
+                            href="app.php?page=skill"
                             aria-expanded="false">
                             <i class="fas fa-code"></i>
                             <p>Skills</p>
@@ -74,7 +74,7 @@ project-crud-main/user.php
                     </li>
                     <li class="nav-item">
                         <a
-                            href="project.php"
+                            href="app.php?page=project"
                             aria-expanded="false">
                             <i class="fa-solid fa-diagram-project"></i>
                             <p>Project</p>
@@ -82,7 +82,7 @@ project-crud-main/user.php
                     </li>
                     <li class="nav-item">
                         <a
-                            href="blog.php"
+                            href="app.php?page=blog"
                             aria-expanded="false">
                             <i class="fa-solid fa-blogger"></i>
                             <p>My Blogs</p>
@@ -91,7 +91,7 @@ project-crud-main/user.php
                     <li class="nav-item">
                         <a
 
-                            href="contact.php"
+                            href="app.php?page=contact"
                             aria-expanded="false">
                             <i class="fa fa-address-book"></i>
                             <p>Contact</p>
@@ -100,7 +100,7 @@ project-crud-main/user.php
                     <li class="nav-item">
                         <a
 
-                            href="setting.php"
+                            href="app.php?page=setting"
                             aria-expanded="false">
                             <i class="fa fa-wrench"></i>
                             <p>Setting</p>

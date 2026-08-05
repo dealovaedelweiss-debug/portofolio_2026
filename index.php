@@ -1,5 +1,5 @@
 	<?php
-	include "project-crud-main/config/koneksi.php";
+	include "admin/config/koneksi.php";
 	$q_slider = mysqli_query($conn, "SELECT * FROM sliders WHERE is_active= 1  ORDER BY id DESC LIMIT 2");
 	$sliders = mysqli_fetch_all($q_slider, MYSQLI_ASSOC);
 	// var_dump($sliders);
@@ -23,6 +23,19 @@
 	//blogger
 	$q_blog = mysqli_query($conn, "SELECT * FROM blog ORDER BY id DESC");
 	$blogs = mysqli_fetch_all($q_blog, MYSQLI_ASSOC);
+
+	//contact
+	if (isset($_POST['submit'])) {
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$subject = $_POST['subject'];
+		$message = $_POST['message'];
+		//DML / SQL
+		//MASUKAN KE DALAM TABLE CONTACT (name, email,subject,message)value($name)
+		$q_contact = mysqli_query($conn, "INSERT INTO contacts (name, email, subject, message)
+		VALUES ('$name', '$email', '$subject', '$message' )");
+		header("location:index.php?tambah=success");
+	}
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -86,7 +99,7 @@
 					<div class="container">
 						<div class="row d-md-flex no-gutters slider-text align-items-end justify-content-end" data-scrollax-parent="true">
 							<div class="one-third js-fullheight order-md-last position-relative">
-								<img src="project-crud-main/assets/img/<?php echo $v['image']; ?>" 
+								<img src="admin/assets/img/<?php echo $v['image']; ?>" 
 									alt="<?php echo $v['title'] ?? 'Slider Image'; ?>" 
 									class="w-100 h-100 object-fit-cover">
 								
@@ -259,7 +272,7 @@
 								</div>
 							</a>
 						</div>
-						<div class="col-md-4 text-center d-flex ftco-animate">
+						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-flasks"></i>
@@ -268,8 +281,8 @@
 									<h3 class="mb-5">Phtography</h3>
 								</div>
 							</a>
-						</div>
-						<div class="col-md-4 text-center d-flex ftco-animate">
+						</div> -->
+						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-ideas"></i>
@@ -278,9 +291,9 @@
 									<h3 class="mb-5">Web Developer</h3>
 								</div>
 							</a>
-						</div>
+						</div> -->
 
-						<div class="col-md-4 text-center d-flex ftco-animate">
+						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-analysis"></i>
@@ -289,8 +302,8 @@
 									<h3 class="mb-5">App Developing</h3>
 								</div>
 							</a>
-						</div>
-						<div class="col-md-4 text-center d-flex ftco-animate">
+						</div> -->
+						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-flasks"></i>
@@ -299,8 +312,8 @@
 									<h3 class="mb-5">Branding</h3>
 								</div>
 							</a>
-						</div>
-						<div class="col-md-4 text-center d-flex ftco-animate">
+						</div> -->
+						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-ideas"></i>
@@ -309,8 +322,8 @@
 									<h3 class="mb-5">Product Strategy</h3>
 								</div>
 							</a>
-						</div>
-					</div>
+						</div> -->
+				</div>
 			</div>
 		</section>
 
@@ -364,7 +377,7 @@
 					if ($no % 2 == 0 ) {
 						?>
 					<div class="col-md-4">
-						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>);">
+						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(admin/assets/img/<?= $v['image'] ?>);">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
 								<h3><a href="<?= $v['link'] ?>"><?= $v['title'] ?></a></h3>
@@ -376,7 +389,7 @@
 					}else {
 						?>
 						<div class="col-md-8">
-						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>);">
+						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(admin/assets/img/<?= $v['image'] ?>);">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
 								<h3><a href="<?= $v['link'] ?>"><?= $v['title'] ?></a></h3>
@@ -452,7 +465,7 @@
 				?>
 				<div class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry justify-content-end">
-					<a href="single.html" class="block-20" style="background-image: url(project-crud-main/assets/img/<?= $v['image'] ?>); width:300px">
+					<a href="single.html" class="block-20" style="background-image: url(admin/assets/img/<?= $v['image'] ?>); width:300px">
 					</a>
 					<div class="text mt-3 float-right d-block">
 						<div class="d-flex align-items-center mb-3 meta">
@@ -607,21 +620,21 @@
 
 			<div class="row no-gutters block-9">
 			<div class="col-md-6 order-md-last d-flex">
-				<form action="#" class="bg-light p-4 p-md-5 contact-form">
+				<form action="#" method="post" class="bg-light p-4 p-md-5 contact-form">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Your Name">
+					<input type="text" class="form-control" name="name" placeholder="Your Name">
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Your Email">
+					<input type="text" class="form-control" name= "email" placeholder="Your Email">
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Subject">
+					<input type="text" class="form-control" name= "subject" placeholder="Subject">
 				</div>
 				<div class="form-group">
-					<textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+					<textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
 				</div>
 				<div class="form-group">
-					<input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+					<input type="submit" name="submit" value="Send Message" class="btn btn-primary py-3 px-5">
 				</div>
 				</form>
 			
