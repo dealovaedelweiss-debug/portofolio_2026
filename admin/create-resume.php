@@ -15,7 +15,7 @@ if (isset($_POST['save'])){
 if($id){
   //query update
   $update = mysqli_query($conn, "UPDATE resume SET title ='$title', substitle ='$substitle', description = '$description', year_start = '$year_star', year_end = '$year_end ' WHERE id='$id'");
-  header("location:rapp.php?page=resume&update=berhasil");
+  header("location:app.php?page=resume&update=berhasil");
 }else{
   $insert = mysqli_query($conn, "INSERT INTO resume (title, substitle, description, year_start, year_end) VALUES('$title', '$substitle', '$description', '$year_star', '$year_end ' )");
   header("location:app.php?page=resume&tambah=berhasil");
@@ -78,6 +78,7 @@ if($id){
         const year_end =  document.getElementById("year_end");
         const year_old = 1920;
         const currentYear = new Date().getFullYear();
+        const futureYear = 2030;
 
         const yearDataStart = "<?=  ($id) ? $row['year_start'] : '' ?>";
         const yearDataEnd = "<?= ($id) ? $row['year_end'] : '' ?>";
@@ -91,7 +92,7 @@ if($id){
           }
           year_start.appendChild(option);
         }
-        for (let year = currentYear; year >= year_old; year--) {
+        for (let year = futureYear; year > year_old; year--) {
           const option = document.createElement("option");
           option.value = year;
           option.textContent =  year;

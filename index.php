@@ -80,7 +80,7 @@
 				<!-- <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li> -->
 				<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
 				<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
-				<li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
+				<!-- <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li> -->
 				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
 				</ul>
 			</div>
@@ -159,14 +159,12 @@
 					<div class="col-md-12 heading-section ftco-animate">
 						<h1 class="big">About</h1>
 						<h2 class="mb-4">About Me</h2>
-						<p>fdgdokgjdfokgdkl</p>
+						<p><?= $about['description']?></p>
 						<ul class="about-info mt-4 px-md-0 px-2">
-							<!-- <li class="d-flex"><span>Name:</span> <span>Clark Thompson</span></li>
-							<li class="d-flex"><span>Date of birth:</span> <span>January 01, 1987</span></li> -->
-							<li class="d-flex"><span>Address:</span> <span><?= $about['address'] ?></span></li>
 							<li class="d-flex"><span>Name:</span> <span><?= $about['website_name'] ?></span></li>
 							<li class="d-flex"><span>Email:</span> <span><?= $about['email'] ?></span></li>
 							<li class="d-flex"><span>Phone: </span> <span><?= $about['phone'] ?></span></li>
+							<li class="d-flex"><span>Address:</span> <span><?= $about['address'] ?></span></li>
 						</ul>
 					</div>
 					</div>
@@ -174,7 +172,7 @@
 				<!-- <div class="text">
 					<p class="mb-4">
 						<span class="number" data-number="120">0</span>
-						<span><?= $about['description'] ?></span>
+						<span></span>
 					</p>
 					<p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
 				</div>` -->
@@ -190,7 +188,8 @@
 			<div class="col-md-10 heading-section text-center ftco-animate">
 				<h1 class="big big-2">Resume</h1>
 				<h2 class="mb-4">Resume</h2>
-				<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+				<p>Kombinasi antara pengalaman kepemimpinan, komunikasi publik, dan keahlian teknis di dunia digital.
+				 Sebuah ringkasan perjalanan dan dedikasi saya untuk terus belajar.</p>
 			</div>
 		</div>
 		<div class="row">
@@ -245,7 +244,7 @@
 		</div>
 				<div class="row justify-content-center mt-5">
 					<div class="col-md-6 text-center ftco-animate">
-						<p><a href="#" class="btn btn-primary py-4 px-5">Download CV</a></p>
+						<p><a href="https://drive.google.com/file/d/14325Mgf-Vy3Bb_yDhI-hiI7w1szoZdYd/view?usp=drive_link" class="btn btn-primary py-4 px-5">Download CV</a></p>
 					</div>
 			</div>
 		</div>
@@ -334,7 +333,8 @@
 						<div class="col-md-12 heading-section text-center ftco-animate">
 							<h1 class="big big-2">Skills</h1>
 							<h2 class="mb-4">My Skills</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+							<p>Memadukan logika pemrograman yang terstruktur dengan kepekaan visual.
+							Berikut adalah keahlian teknis dan kreatif yang saya gunakan untuk menciptakan solusi digital</p>
 						</div>
 					</div>
 					<div class="row">
@@ -367,7 +367,8 @@
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<h1 class="big big-2">Projects</h1>
 				<h2 class="mb-4">Our Projects</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				<p>Dari logika sistem berorientasi objek hingga antarmuka web dinamis.
+					Berikut adalah deretan project digital yang saya kembangkan.</p>
 			</div>
 			</div>
 				<div class="row">
@@ -377,7 +378,7 @@
 					if ($no % 2 == 0 ) {
 						?>
 					<div class="col-md-4">
-						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(admin/assets/img/<?= $v['image'] ?>);">
+						<div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url(admin/assets/img/<?= $v['image'] ?>) ;">
 							<div class="overlay"></div>
 							<div class="text text-center p-4">
 								<h3><a href="<?= $v['link'] ?>"><?= $v['title'] ?></a></h3>
@@ -449,7 +450,7 @@
 		</section>
 
 
-		<section class="ftco-section" id="blog-section">
+	<!-- <section class="ftco-section" id="blog-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-5">
 			<div class="col-md-7 heading-section text-center ftco-animate">
@@ -516,7 +517,7 @@
 			</div> -->
 			</div>
 		</div>
-		</section>
+	<!-- </section> --> 
 
 		<!-- <section class="ftco-section ftco-no-pt ftco-no-pb ftco-counter img" id="section-counter">
 			<div class="container">
@@ -569,42 +570,41 @@
 				</div>
 		</section> -->
 
-		<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
+	<section class="ftco-section contact-section ftco-no-pb" id="contact-section">
+		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
 				<h1 class="big big-2">Contact</h1>
 				<h2 class="mb-4">Contact Me</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+				<p>Terbuka untuk peluang kolaborasi, diskusi teknologi, maupun perancangan proyek digital.</p>
 			</div>
 			</div>
-
-			<div class="row d-flex contact-info mb-5">
-			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-				<div class="align-self-stretch box p-4 text-center">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="icon-map-signs"></span>
+			<div class="row d-flex contact-info mb-5 justify-content-center">
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center ">
+							<span class="icon-map-signs"></span>
+						</div>
+						<h3 class="mb-4">Address</h3>
+						<p></p><?= $about['address'] ?>
 					</div>
-					<h3 class="mb-4">Address</h3>
-					<p>198 West 21th Street, Suite 721 New York NY 10016</p>
 				</div>
-			</div>
-			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-				<div class="align-self-stretch box p-4 text-center">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="icon-phone2"></span>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-phone2"></span>
+						</div>
+						<h3 class="mb-4">Contact Number</h3>
+						<p><a href="#"><?= $about['phone'] ?></a></p>
 					</div>
-					<h3 class="mb-4">Contact Number</h3>
-					<p><a href="tel://1234567920">+ 1235 2355 98</a></p>
 				</div>
-			</div>
-			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
-				<div class="align-self-stretch box p-4 text-center">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="icon-paper-plane"></span>
+				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+					<div class="align-self-stretch box p-4 text-center ">
+						<div class="icon d-flex align-items-center justify-content-center">
+							<span class="icon-paper-plane"></span>
+						</div>
+						<h3 class="mb-4">Email Address</h3>
+						<p><a href="#"><?= $about['email'] ?></a></p>
 					</div>
-					<h3 class="mb-4">Email Address</h3>
-					<p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
 				</div>
 			</div>
 			<!-- <div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -616,36 +616,33 @@
 					<p><a href="#">yoursite.com</a></p>
 				</div>
 			</div> -->
-			</div>
-
 			<div class="row no-gutters block-9">
-			<div class="col-md-6 order-md-last d-flex">
-				<form action="#" method="post" class="bg-light p-4 p-md-5 contact-form">
-				<div class="form-group">
-					<input type="text" class="form-control" name="name" placeholder="Your Name">
+				<div class="col-md-6 order-md-last d-flex">
+					<form action="#" method="post" class="bg-light p-4 p-md-5 contact-form">
+					<div class="form-group">
+						<input type="text" class="form-control" name="name" placeholder="Your Name">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name= "email" placeholder="Your Email">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" name= "subject" placeholder="Subject">
+					</div>
+					<div class="form-group">
+						<textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" name="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+					</div>
+					</form>
+				
 				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" name= "email" placeholder="Your Email">
+				<div class="col-md-6 d-flex">
+					<div class="img" style="background-image: url(images/about.jpg);"></div>
 				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" name= "subject" placeholder="Subject">
-				</div>
-				<div class="form-group">
-					<textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-				</div>
-				<div class="form-group">
-					<input type="submit" name="submit" value="Send Message" class="btn btn-primary py-3 px-5">
-				</div>
-				</form>
-			
-			</div>
-
-			<div class="col-md-6 d-flex">
-				<div class="img" style="background-image: url(images/about.jpg);"></div>
-			</div>
 			</div>
 		</div>
-		</section>
+	</section>
 			
 
 		<footer class="ftco-footer ftco-section">
@@ -654,27 +651,28 @@
 			<div class="col-md">
 				<div class="ftco-footer-widget mb-4">
 				<h2 class="ftco-heading-2">About</h2>
-				<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				<p>Hai! Senang kamu bisa mampir ke sini. Di balik setiap sistem rumit yang kubuat, 
+				selalu ada keinginan tulus untuk menghadirkan sesuatu yang bermanfaat sekaligus indah untuk dipandang.</p>
 				<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-					<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-					<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-					<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+					<!-- <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li> -->
+					<!-- <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li> -->
+					<li class="ftco-animate"><a href="https://www.instagram.com/edlnoirs?igsh=MW4zd3drZX"><span class="icon-instagram"></span></a></li>
 				</ul>
 				</div>
 			</div>
-			<div class="col-md">
-				<div class="ftco-footer-widget mb-4 ml-md-4">
+			<div class="col-md d-flex justify-content-center">
+				<div class="ftco-footer-widget ml-md-4">
 				<h2 class="ftco-heading-2">Links</h2>
 				<ul class="list-unstyled">
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
-					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
-					<!-- <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li> -->
+					<!-- <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li> -->
+					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
 				</ul>
 				</div>
 			</div>
-			<div class="col-md">
+			<!-- <div class="col-md">
 				<div class="ftco-footer-widget mb-4">
 				<h2 class="ftco-heading-2">Services</h2>
 				<ul class="list-unstyled">
@@ -685,15 +683,15 @@
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Graphic Design</a></li>
 				</ul>
 				</div>
-			</div>
+			</div> -->
 			<div class="col-md">
 				<div class="ftco-footer-widget mb-4">
 					<h2 class="ftco-heading-2">Have a Questions?</h2>
 					<div class="block-23 mb-3">
 					<ul>
-						<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-						<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-						<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+						<li><span class="icon icon-map-marker"></span><span class="text"><?= $about['address'] ?></span></li>
+						<li><a href="#"><span class="icon icon-phone"></span><span class="text"><?= $about['phone'] ?></span></a></li>
+						<li><a href="#"><span class="icon icon-envelope"></span><span class="text"><?= $about['email'] ?></span></a></li>
 					</ul>
 					</div>
 				</div>
@@ -703,7 +701,7 @@
 			<div class="col-md-12 text-center">
 
 				<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+	Copyright &copy;<script>document.write(new Date().getFullYear());</script> Dealova Edelweiss<i class="icon-heart color-danger" aria-hidden="true"></i> <a href="#" target="_blank"></a>
 	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 			</div>
 			</div>

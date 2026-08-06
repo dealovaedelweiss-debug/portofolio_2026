@@ -1,58 +1,41 @@
-/* 1. Background utama warna Onyx (Gelap elegan) */
+/* 1. Background utama (Vino Tinto - Paling Gelap) */
 body, .ftco-section {
-    background-color: #241929 !important;
-    color: #E5E6E1 !important;
+    background-color: #531C24 !important;
+    color: #CCA0A0 !important; 
 }
 
-/* 2. Warna teks biasa dan nama (Gin Tonic) */
-body p, .about-info li span {
-    color: #E5E6E1 !important;
+/* 2. Warna teks utama agar kelihatan jelas (Sakura Mochi - Paling Terang) */
+body p, .about-info li span, .heading-section h2 {
+    color: #CCA0A0 !important;
 }
 
-/* 3. Judul di depan (Contoh: "About Me", "Resume") */
-.heading-section h2 {
-    color: #E5E6E1 !important;
-}
-
-/* 4. Teks Bayangan Raksasa di Belakang (Ghost Text) warna Wineshade */
+/* 3. Ghost Text / Teks Bayangan (Pink Shade - Agak Terang) */
 .heading-section h1.big {
-    color: rgba(90, 72, 100, 0.4) !important; /* Kode warna Wineshade (#5A4864) dengan transparansi */
+    color: #CF7381 !important; /* Warna bayangan yang terang */
+    opacity: 0.35 !important; /* Tingkat transparansi. Ubah angkanya (misal 0.5) jika ingin lebih terang lagi */
+    position: absolute !important;
+    top: 40px !important; 
     z-index: 0 !important;
 }
 
-/* 5. Aksen warna Pink Diamond untuk tombol/link agar manis */
-a {
-    color: #EFCCEA !important;
-}
-/* Menggeser teks bayangan raksasa ("About", "Resume") agak ke atas */
-.heading-section h1.big {
-    top: 30px !important; 
-}
-
-/* Menggeser judul utama ("About Me", "Resume") agak ke bawah */
-.heading-section h2 {
-    padding-top: 10px !important; 
-}
-/* 1. Memberi jarak ke atas untuk angka persentase agar tidak menabrak teks nama skill
-.progress-bar span {
-    top: -30px !important;
-    right: 0 !important;
-}
-
-/* 2. Memberikan jarak antar baris progress (margin-bottom) agar tidak terlalu rapat ke bawah */
-/* .progress-wrap {
-    margin-bottom: 35px !important;
-} */
-
-/* Mendorong teks bayangan raksasa agar turun sedikit dan tidak mengenai deskripsi kecil */
-.heading-section h1.big {
-    position: absolute !important;
-    top: 40px !important; 
-}
-
-/* Memberikan jarak aman untuk teks deskripsi di bawah judul */
-.heading-section p {
+/* 4. Memastikan teks judul utama tetap di depan bayangan */
+.heading-section p, .heading-section h2 {
     position: relative;
-    z-index: 2;
-    margin-top: 15px !important;
+    z-index: 2 !important;
+}
+
+/* 5. Warna aksen untuk link atau elemen kecil (Scarlet Ribbons) */
+a {
+    color: #A3334B !important;
+}
+
+/* Mengubah background Navbar menjadi Pink Shade */
+#ftco-navbar, 
+.ftco-navbar-light.scrolled {
+    background-color: #CF7381 !important;
+}
+
+/* (Opsional) Mengubah warna teks menu di navbar agar tetap terbaca jelas */
+#ftco-navbar .navbar-nav > li > a {
+    color: #531C24 !important; /* Warna gelap Vino Tinto */
 }
