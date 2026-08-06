@@ -77,7 +77,7 @@
 				<li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
 				<li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 				<li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
-				<li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li>
+				<!-- <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li> -->
 				<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
 				<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
 				<li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li>
@@ -159,12 +159,12 @@
 					<div class="col-md-12 heading-section ftco-animate">
 						<h1 class="big">About</h1>
 						<h2 class="mb-4">About Me</h2>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<p>fdgdokgjdfokgdkl</p>
 						<ul class="about-info mt-4 px-md-0 px-2">
-							<li class="d-flex"><span>Name:</span> <span>Clark Thompson</span></li>
-							<li class="d-flex"><span>Date of birth:</span> <span>January 01, 1987</span></li>
+							<!-- <li class="d-flex"><span>Name:</span> <span>Clark Thompson</span></li>
+							<li class="d-flex"><span>Date of birth:</span> <span>January 01, 1987</span></li> -->
 							<li class="d-flex"><span>Address:</span> <span><?= $about['address'] ?></span></li>
-							<li class="d-flex"><span>Website Name:</span> <span><?= $about['website_name'] ?></span></li>
+							<li class="d-flex"><span>Name:</span> <span><?= $about['website_name'] ?></span></li>
 							<li class="d-flex"><span>Email:</span> <span><?= $about['email'] ?></span></li>
 							<li class="d-flex"><span>Phone: </span> <span><?= $about['phone'] ?></span></li>
 						</ul>
@@ -252,7 +252,7 @@
 			
 		</section>
 
-		<section class="ftco-section" id="services-section">
+		<!-- <section class="ftco-section" id="services-section">
 			<div class="container">
 				<div class="row justify-content-center py-5 mt-5">
 			<div class="col-md-12 heading-section text-center ftco-animate">
@@ -272,7 +272,7 @@
 								</div>
 							</a>
 						</div>
-						<!-- <div class="col-md-4 text-center d-flex ftco-animate">
+						<div class="col-md-4 text-center d-flex ftco-animate">
 							<a href="#" class="services-1">
 								<span class="icon">
 									<i class="flaticon-flasks"></i>
@@ -323,9 +323,9 @@
 								</div>
 							</a>
 						</div> -->
-				</div>
-			</div>
-		</section>
+				<!-- </div> -->
+			<!-- </div> -->
+		<!-- </section> --> 
 
 			
 			<section class="ftco-section" id="skills-section">
@@ -470,7 +470,7 @@
 					<div class="text mt-3 float-right d-block">
 						<div class="d-flex align-items-center mb-3 meta">
 							<p class="mb-0">
-								<span class="mr-2"><?= $v['date'] ?></span>
+								<span class="mr-2"><?= date('F j, Y', strtotime($v['date']))  ?></span>
 							</p>
 						</div>
 						<h3 class="heading"><a href="single.html"><?= $v['title'] ?></a></h3>
@@ -607,7 +607,7 @@
 					<p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
 				</div>
 			</div>
-			<div class="col-md-6 col-lg-3 d-flex ftco-animate">
+			<!-- <div class="col-md-6 col-lg-3 d-flex ftco-animate">
 				<div class="align-self-stretch box p-4 text-center">
 					<div class="icon d-flex align-items-center justify-content-center">
 						<span class="icon-globe"></span>
@@ -615,7 +615,7 @@
 					<h3 class="mb-4">Website</h3>
 					<p><a href="#">yoursite.com</a></p>
 				</div>
-			</div>
+			</div> -->
 			</div>
 
 			<div class="row no-gutters block-9">
@@ -669,7 +669,7 @@
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Services</a></li>
-					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li>
+					<!-- <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Projects</a></li> -->
 					<li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
 				</ul>
 				</div>
