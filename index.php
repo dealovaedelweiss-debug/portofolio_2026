@@ -21,8 +21,8 @@
 	$projects = mysqli_fetch_all($q_project, MYSQLI_ASSOC);
 
 	//blogger
-	$q_blog = mysqli_query($conn, "SELECT * FROM blog ORDER BY id DESC");
-	$blogs = mysqli_fetch_all($q_blog, MYSQLI_ASSOC);
+	// $q_blog = mysqli_query($conn, "SELECT * FROM blog ORDER BY id DESC");
+	// $blogs = mysqli_fetch_all($q_blog, MYSQLI_ASSOC);
 
 	//contact
 	if (isset($_POST['submit'])) {
@@ -35,7 +35,11 @@
 		$q_contact = mysqli_query($conn, "INSERT INTO contacts (name, email, subject, message)
 		VALUES ('$name', '$email', '$subject', '$message' )");
 		header("location:index.php?tambah=success");
+
 	}
+	//school
+	$q_school = mysqli_query($conn, "SELECT * FROM schools ORDER BY id DESC");
+	$school = mysqli_fetch_all($q_school, MYSQLI_ASSOC);
 	?>
 	<!DOCTYPE html>
 	<html lang="en">
@@ -80,6 +84,7 @@
 				<!-- <li class="nav-item"><a href="#services-section" class="nav-link"><span>Services</span></a></li> -->
 				<li class="nav-item"><a href="#skills-section" class="nav-link"><span>Skills</span></a></li>
 				<li class="nav-item"><a href="#projects-section" class="nav-link"><span>Projects</span></a></li>
+				<li class="nav-item"><a href="#school-section" class="nav-link"><span>School</span></a></li>
 				<!-- <li class="nav-item"><a href="#blog-section" class="nav-link"><span>My Blog</span></a></li> -->
 				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
 				</ul>
@@ -367,7 +372,7 @@
 			<div class="col-md-12 heading-section text-center ftco-animate">
 				<h1 class="big big-2">Projects</h1>
 				<h2 class="mb-4">Our Projects</h2>
-				<p>Dari logika sistem berorientasi objek hingga antarmuka web dinamis.
+				<p>Dari logika sistem berorientasi objek hingga antarmuka web dinamis dan statis.
 					Berikut adalah deretan project digital yang saya kembangkan.</p>
 			</div>
 			</div>
@@ -448,7 +453,33 @@
 				</div>
 			</div>
 		</section>
-
+		<section class="ftco-section ftco-no-pb" id="school-section">
+			<div class="container">
+				<div class="row justify-content-center pb-5">
+					<div class="col-md-10 heading-section text-center ftco-animate">
+						<h1 class="big big-2">School</h1>
+						<h2 class="mb-4">My School</h2>
+						<p>Ringkasan latar belakang akademis.</p>
+					</div>
+				</div>
+				<div class="row">
+					<?php
+						foreach ($school as $v) {
+						?>
+					<div class="col-md-6">
+						<div class="resume-wrap ftco-animate">
+							<span class="date"><?= $v['year_start']. "-" . $v['year_end'] ?></span>
+							<h2><?= $v['title']?></h2>
+							<span class="position"><?= $v['substitle']?></span>
+							<!-- <p class="mt-4"></p> -->
+						</div>
+					</div>
+				</div>
+				<?php
+				}
+				?>
+			</div>
+		</section>
 
 	<!-- <section class="ftco-section" id="blog-section">
 		<div class="container">
@@ -460,28 +491,24 @@
 			</div>
 			</div>
 			<div class="row d-flex">
-				<?php
-				foreach ($blogs as $index => $v) {
-				
-				?>
-				<div class="col-md-4 d-flex ftco-animate">
+ class="col-md-4 d-flex ftco-animate">
 					<div class="blog-entry justify-content-end">
-					<a href="single.html" class="block-20" style="background-image: url(admin/assets/img/<?= $v['image'] ?>); width:300px">
+					<a href="single.html" class="block-20" style="background-image: url(admin/assets/img/); width:300px">
 					</a>
 					<div class="text mt-3 float-right d-block">
 						<div class="d-flex align-items-center mb-3 meta">
 							<p class="mb-0">
-								<span class="mr-2"><?= date('F j, Y', strtotime($v['date']))  ?></span>
+								<span class="mr-2"></span>
 							</p>
 						</div>
-						<h3 class="heading"><a href="single.html"><?= $v['title'] ?></a></h3>
-						<p><?= $v['description'] ?></p>
+						<h3 class="heading"><a href="single.html"></a></h3>
+						<p></p>
 					</div>
 				</div>
 			</div>
-				<?php }?>
 			
-			<!-- <div class="col-md-4 d-flex ftco-animate">
+			
+			 <div class="col-md-4 d-flex ftco-animate">
 				<div class="blog-entry justify-content-end">
 				<a href="single.html" class="block-20" style="background-image: url('images/image_2.jpg');">
 				</a>
@@ -594,7 +621,7 @@
 							<span class="icon-phone2"></span>
 						</div>
 						<h3 class="mb-4">Contact Number</h3>
-						<p><a href="#"><?= $about['phone'] ?></a></p>
+						<p><a href="#" style="color: #ffffff; text-decoration: none;"><?= $about['phone'] ?></a></p>
 					</div>
 				</div>
 				<div class="col-md-6 col-lg-3 d-flex ftco-animate">
@@ -616,7 +643,8 @@
 					<p><a href="#">yoursite.com</a></p>
 				</div>
 			</div> -->
-			<div class="row no-gutters block-9">
+			<div class="container">
+				<div class="row no-gutters block-9">
 				<div class="col-md-6 order-md-last d-flex">
 					<form action="#" method="post" class="bg-light p-4 p-md-5 contact-form">
 					<div class="form-group">
@@ -641,6 +669,8 @@
 					<div class="img" style="background-image: url(images/about.jpg);"></div>
 				</div>
 			</div>
+			</div>
+			
 		</div>
 	</section>
 			

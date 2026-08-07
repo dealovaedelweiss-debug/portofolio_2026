@@ -82,6 +82,14 @@
                     </li>
                     <li class="nav-item">
                         <a
+                            href="app.php?page=school"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                            <p>School</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a
                             href="app.php?page=blog"
                             aria-expanded="false">
                             <i class="fa-solid fa-blogger"></i>
